@@ -1,0 +1,67 @@
+﻿{
+    "configurationInfos":{
+        "logF_BusinessProcessName":"Framework",
+        "relPathCreateToken":"identity_/connect/token",
+        "relPathQueueDefinitionIdOrc":"{0}/{1}/odata/QueueDefinitions",
+        "relPathQueueItemOrc":"{0}/{1}/odata/QueueItems?$top={2}&$filter=QueueDefinitionId eq {3} and (Status eq 'New' or Status eq 'Successful' or Status eq 'Failed')&$orderby=StartProcessing desc&$skip={4}",
+        "signature":"BRAX - Automações por Rpa",
+        "subject":"[Relatório] {0} - {1}",
+        "spreadSheetFilePath":"Data\\",
+        "vibraOrchestratorAppScope":"OR.Assets.Read OR.Execution.Read OR.Folders.Read OR.Jobs.Read OR.Queues.Read OR.Robots.Read",
+        "MaxRetryNumber":3,
+        "exScreenshotsFolderPath":"05-ExceptionScreenshots",
+        "LogMessage_GetTransactionData":"Processing Transaction Number: ",
+        "LogMessage_GetTransactionDataError":"Error getting transaction data for Transaction Number: ",
+        "LogMessage_Success":"Transaction Successful.",
+        "LogMessage_BusinessRuleException":"Business rule exception.",
+        "LogMessage_ApplicationException":"System exception.",
+        "assets":{
+            "uipathOrchestratorUrl":{
+                "name":"UiPathOrchestrator_URL",
+                "orchestratorFolder":"Shared"
+            },
+            "office365AppId":{
+                "name":"OFFICE365_APPID",
+                "orchestratorFolder":"Shared"
+            },
+            "office365TenantId":{
+                "name":"OFFICE365_TENANT",
+                "orchestratorFolder":"Shared"
+            },
+            "cloudUipathOrganization":{
+                "name":"CloudUipathOrganization",
+                "orchestratorFolder":"Shared"
+            },
+            "cloudUiPathTenant":{
+                "name":"CloudUipathTenant",
+                "orchestratorFolder":"Shared"
+            },
+			"reporterUniversalQueueName":{
+				"name":"ReporterUniversalQueueName",
+				"orchestratorFolder":"Shared"
+			},
+			"smarthisMailSupport":{
+				"name":"SmarthisMailSupport",
+				"orchestratorFolder":"Shared"
+			}
+        },
+        "credentials":{
+            "vibraOrchestratorAppClientId":{
+                "name":"VibraOrchestratorAppClientId_API",
+                "orchestratorFolder":"Shared"
+            },
+            "vibraOrchestratorAppClientSecret":{
+                "name":"VibraOrchestratorAppClientSecret_API",
+                "orchestratorFolder":"Shared"
+            },
+            "braxMailSender":{
+                "name":"braxMailSender",
+                "orchestratorFolder":"Shared"
+            },
+            "clientSecretOffice365App":{
+                "name":"ClientSecretOffice365App",
+                "orchestratorFolder":"Shared"
+            }
+        }
+    }
+}
