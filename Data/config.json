@@ -28,6 +28,10 @@
                 "name":"smtpMailServer",
                 "orchestratorFolder":"Default"
             },
+            "smtpMailFrom":{
+                "name":"smtpMailFrom",
+                "orchestratorFolder":"smtpMailFrom"
+            },
             "cloudUipathOrganization":{
                 "name":"CloudUipathOrganization",
                 "orchestratorFolder":"Default"
