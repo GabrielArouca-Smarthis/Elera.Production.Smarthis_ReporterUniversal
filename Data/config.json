@@ -4,7 +4,7 @@
         "relPathCreateToken":"identity_/connect/token",
         "relPathQueueDefinitionIdOrc":"{0}/{1}/odata/QueueDefinitions",
         "relPathQueueItemOrc":"{0}/{1}/odata/QueueItems?$top={2}&$filter=QueueDefinitionId eq {3} and (Status eq 'New' or Status eq 'Successful' or Status eq 'Failed')&$orderby=StartProcessing desc&$skip={4}",
-        "signature":"BRAX - Automações por Rpa",
+        "signature":"Elera - Automações por Rpa",
         "subject":"[Relatório] {0} - {1}",
         "spreadSheetFilePath":"Data\\",
         "vibraOrchestratorAppScope":"OR.Assets.Read OR.Execution.Read OR.Folders.Read OR.Jobs.Read OR.Queues.Read OR.Robots.Read",
@@ -18,49 +18,49 @@
         "assets":{
             "uipathOrchestratorUrl":{
                 "name":"UiPathOrchestrator_URL",
-                "orchestratorFolder":"Shared"
+                "orchestratorFolder":"Default"
             },
-            "office365AppId":{
-                "name":"OFFICE365_APPID",
-                "orchestratorFolder":"Shared"
+            "smtpMailPort":{
+                "name":"smtpMailPort",
+                "orchestratorFolder":"Default"
             },
-            "office365TenantId":{
-                "name":"OFFICE365_TENANT",
-                "orchestratorFolder":"Shared"
+            "smtpMailServer":{
+                "name":"smtpMailServer",
+                "orchestratorFolder":"Default"
             },
             "cloudUipathOrganization":{
                 "name":"CloudUipathOrganization",
-                "orchestratorFolder":"Shared"
+                "orchestratorFolder":"Default"
             },
             "cloudUiPathTenant":{
                 "name":"CloudUipathTenant",
-                "orchestratorFolder":"Shared"
+                "orchestratorFolder":"Default"
             },
 			"reporterUniversalQueueName":{
 				"name":"ReporterUniversalQueueName",
-				"orchestratorFolder":"Shared"
+				"orchestratorFolder":"Default"
 			},
 			"smarthisMailSupport":{
 				"name":"SmarthisMailSupport",
-				"orchestratorFolder":"Shared"
+				"orchestratorFolder":"Default"
 			}
         },
         "credentials":{
             "vibraOrchestratorAppClientId":{
                 "name":"VibraOrchestratorAppClientId_API",
-                "orchestratorFolder":"Shared"
+                "orchestratorFolder":"Default"
             },
             "vibraOrchestratorAppClientSecret":{
                 "name":"VibraOrchestratorAppClientSecret_API",
-                "orchestratorFolder":"Shared"
+                "orchestratorFolder":"Default"
             },
             "braxMailSender":{
                 "name":"braxMailSender",
-                "orchestratorFolder":"Shared"
+                "orchestratorFolder":"Default"
             },
             "clientSecretOffice365App":{
                 "name":"ClientSecretOffice365App",
-                "orchestratorFolder":"Shared"
+                "orchestratorFolder":"Default"
             }
         }
     }

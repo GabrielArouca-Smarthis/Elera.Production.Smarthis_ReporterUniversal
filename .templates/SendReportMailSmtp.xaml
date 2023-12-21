@@ -1,0 +1,152 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendReportMailSmtp" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_smtpMailReceiverTo" Type="InArgument(x:String)" />
+    <x:Property Name="in_smtpMailSubject" Type="InArgument(x:String)" />
+    <x:Property Name="in_attachment" Type="InArgument(x:String)" />
+    <x:Property Name="in_smtpPort" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_smtpServer" Type="InArgument(x:String)" />
+    <x:Property Name="in_smtpMailReceiverCc" Type="InArgument(x:String)" />
+    <x:Property Name="in_projectName" Type="InArgument(x:String)" />
+    <x:Property Name="in_logoBase64" Type="InArgument(x:String)" />
+    <x:Property Name="in_gifBase64" Type="InArgument(x:String)" />
+    <x:Property Name="in_sendMailToBusinessArea" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <this:SendReportMailSmtp.in_smtpPort>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:SendReportMailSmtp.in_smtpPort>
+  <this:SendReportMailSmtp.in_smtpServer>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendReportMailSmtp.in_smtpServer>
+  <this:SendReportMailSmtp.in_smtpMailReceiverCc>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendReportMailSmtp.in_smtpMailReceiverCc>
+  <this:SendReportMailSmtp.in_projectName>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendReportMailSmtp.in_projectName>
+  <this:SendReportMailSmtp.in_logoBase64>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendReportMailSmtp.in_logoBase64>
+  <this:SendReportMailSmtp.in_gifBase64>
+    <InArgument x:TypeArguments="x:String" />
+  </this:SendReportMailSmtp.in_gifBase64>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>928,819</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>SendReportMailSmtp_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="SendReportMailSmtp" sap:VirtualizedContainerService.HintSize="496,673" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="htmlMailBody" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <umab:CreateHtmlContent DisplayName="Create html body content report mail smtp" sap:VirtualizedContainerService.HintSize="434,152" HtmlContent="[htmlMailBody]" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_2">
+      <umab:CreateHtmlContent.HtmlContentArg>
+        <umabh:HtmlContentArgument FilePath=".data/HtmlContent0.html">
+          <umabh:HtmlContentArgument.RuntimeImages>
+            <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+          </umabh:HtmlContentArgument.RuntimeImages>
+          <umabh:HtmlContentArgument.ValueMappings>
+            <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="4">
+              <umabh:HtmlTextValueMapping Name="ProjectName" Value="[in_projectName]" />
+            </scg:List>
+          </umabh:HtmlContentArgument.ValueMappings>
+        </umabh:HtmlContentArgument>
+      </umab:CreateHtmlContent.HtmlContentArg>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </umab:CreateHtmlContent>
+    <ui:SendMail Bcc="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" Body="[htmlMailBody.Replace(&quot;about:1&quot;,in_gifBase64).Replace(&quot;about:2&quot;,in_logoBase64)]" Cc="[in_smtpMailReceiverCc]" DisplayName="Send SMTP Mail Message" EnableSSL="True" sap:VirtualizedContainerService.HintSize="434,238" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="True" Port="[in_smtpPort]" SecureConnection="Auto" Server="[in_smtpServer]" Subject="[in_smtpMailSubject]" To="[If(in_sendMailToBusinessArea,&#xD;&#xA;&#x9;&#x9;If(Not String.IsNullOrEmpty(in_smtpMailReceiverTo),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;in_smtpMailReceiverTo,&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;in_smtpMailReceiverCc&#xD;&#xA; &#x9;&#x9; ), &#xD;&#xA;&#x9;&#x9; in_smtpMailReceiverTo&#xD;&#xA;  )]">
+      <ui:SendMail.Files>
+        <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+          <InArgument x:TypeArguments="x:String">
+            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_attachment" />
+          </InArgument>
+        </scg:List>
+      </ui:SendMail.Files>
+    </ui:SendMail>
+    <ui:LogMessage DisplayName="Log message - send report mail smtp" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Email successfully sent to {0}&quot;,in_smtpMailReceiverTo)]" />
+  </Sequence>
+</Activity>

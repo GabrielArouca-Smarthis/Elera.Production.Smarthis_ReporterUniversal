@@ -51,6 +51,10 @@
         "testCaseId": "bb21c2e6-7dc1-4cfb-bc4b-9e0c0e64c869",
         "testCaseType": "TestCase",
         "fileName": "Tests\\TestCaseSendMailReport.xaml"
+      },
+      {
+        "templateType": "Generic",
+        "fileName": ".templates\\SendReportMailSmtp.xaml"
       }
     ],
     "modernBehavior": true,

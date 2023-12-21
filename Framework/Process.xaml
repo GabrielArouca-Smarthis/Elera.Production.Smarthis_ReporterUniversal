@@ -49,7 +49,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1240,1546</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>928,1547</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Process_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -128,7 +128,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="546,1481" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Process" sap:VirtualizedContainerService.HintSize="546,1482" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="definitionId" />
       <Variable x:TypeArguments="njl:JToken" Name="listQueueItem" />
@@ -139,7 +139,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[If(io_queuesProcessed.Count &gt; 0,io_queuesProcessed.Any(Function(x) x.Trim().Equals(in_queueName.Trim())),False)]" DisplayName="Validation of duplicate items at runtime" sap:VirtualizedContainerService.HintSize="484,219" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[If(io_queuesProcessed.Count &gt; 0,io_queuesProcessed.Any(Function(x) x.Trim().Equals(in_queueName.Trim())),False)]" DisplayName="Validation of duplicate items at runtime" sap:VirtualizedContainerService.HintSize="484,220" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Throw DisplayName="Throw - BRE" Exception="[New BusinessRuleException(String.Format(&quot; A fila {0} já foi processada anteriormente durante essa execução.&quot;,in_queueName))]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Then>
@@ -186,43 +186,45 @@
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GenerateSpreadSheetReport workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Workflows\GenerateSpreadSheetReport.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_queueHistoric">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="queueHistoric" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_queueName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_queueName" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spreadSheetDestinationPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(DirectCast(in_config(&quot;spreadSheetFilePath&quot;),System.String),String.Concat(in_queueName,&quot;-itens.xlsx&quot;))" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_spreadSheetPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(DirectCast(in_config(&quot;spreadSheetFilePath&quot;),System.String),&quot;Template Reporter.xlsx&quot;)" />
-        </InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_queueHistoric">[queueHistoric]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_queueName">[in_queueName]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spreadSheetDestinationPath">[Path.Combine(DirectCast(in_config("spreadSheetFilePath"),System.String),String.Concat(in_queueName,"-itens.xlsx"))]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_spreadSheetPath">[Path.Combine(DirectCast(in_config("spreadSheetFilePath"),System.String),"Template Reporter.xlsx")]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="484,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[String.Format(DirectCast(in_config(&quot;subject&quot;),System.String),&#xA;in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).&#xA;&#x9;Replace(String.Concat(&quot;/&quot;,in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1)),&#xA;&#x9;&#x9;String.Concat(&quot; - &quot;,&#xA;&#x9;&#x9;&#x9;If(System.Text.RegularExpressions.Regex.Matches(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1),&quot;([A-Z]+(?=$|[A-Z][a-z])|[A-Z]?[a-z]+)&quot;).OfType(Of System.Text.RegularExpressions.Match).Count&gt;0, &#xA;&#x9;&#x9;&#x9;&#x9;String.Join(&quot; &quot;,System.Text.RegularExpressions.Regex.Matches(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1),&quot;([A-Z]+(?=$|[A-Z][a-z])|[A-Z]?[a-z]+)&quot;).OfType(Of System.Text.RegularExpressions.Match).Select(Function(x) x.Value)),&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1)&#xA;&#x9;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;&#x9;)&#xA;&#x9;&#x9;).Replace(&quot;cao&quot;,&quot;ção&quot;),now.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;))]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendMailReport workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" Timeout="00:10:00" UnSafe="False" WorkflowFileName="Workflows\SendMailReport.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SendReportMailSmtp workflow" sap:VirtualizedContainerService.HintSize="484,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" Timeout="00:10:00" UnSafe="False" WorkflowFileName=".templates\SendReportMailSmtp.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_mailSender">[DirectCast(in_config("braxMailSenderUsername"),System.String)]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_mailReceiver">[in_emailBusinessArea]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_subject" xml:space="preserve">[String.Format(DirectCast(in_config("subject"),System.String),in_queueName.Replace("_","/").
-	Replace(String.Concat("/",in_queueName.Replace("_","/").Split("/"c)(in_queueName.Replace("_","/").Split("/"c).Length-1)),
-		String.Concat(" - ",
-			If(System.Text.RegularExpressions.Regex.Matches(in_queueName.Replace("_","/").Split("/"c)(in_queueName.Replace("_","/").Split("/"c).Length-1),"([A-Z]+(?=$|[A-Z][a-z])|[A-Z]?[a-z]+)").OfType(Of System.Text.RegularExpressions.Match).Count&gt;0, 
-				String.Join(" ",System.Text.RegularExpressions.Regex.Matches(in_queueName.Replace("_","/").Split("/"c)(in_queueName.Replace("_","/").Split("/"c).Length-1),"([A-Z]+(?=$|[A-Z][a-z])|[A-Z]?[a-z]+)").OfType(Of System.Text.RegularExpressions.Match).Select(Function(x) x.Value)),
-							in_queueName.Replace("_","/").Split("/"c)(in_queueName.Replace("_","/").Split("/"c).Length-1)
-				)
-			)
-		).Replace("cao","ção"),now.ToString("dd/MM/yyyy HH:mm:ss"))]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_pathFileAttach">[Path.Combine(DirectCast(in_config("spreadSheetFilePath"),System.String),String.Concat(in_queueName,"-itens.xlsx"))]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_queueName">[in_queueName]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_emailReceiverCc">[in_emailReceiverCc]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_braxGifBase64">[DirectCast(in_config("braxGifBase64"),System.String)]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_braxLogoBase64">[DirectCast(in_config("braxLogoBase64"),System.String)]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_applicationId">[DirectCast(in_config("office365AppId"),System.String)]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_tenantId">[DirectCast(in_config("office365TenantId"),System.String)]</InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_sendMailToBusinessArea">[in_sendMailToBusinessArea]</InArgument>
-        <InArgument x:TypeArguments="ss:SecureString" x:Key="in_clientSecretOffice365App">[DirectCast(in_config("clientSecretOffice365AppPassword"),System.Security.SecureString)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_smtpMailReceiverTo">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_emailBusinessArea" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_smtpMailSubject">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(DirectCast(in_config(&quot;subject&quot;),String),in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).&#xD;&#xA;&#x9;Replace(String.Concat(&quot;/&quot;,in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1)),&#xD;&#xA;&#x9;&#x9;String.Concat(&quot; - &quot;,&#xD;&#xA;&#x9;&#x9;&#x9;If(System.Text.RegularExpressions.Regex.Matches(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1),&quot;([A-Z]+(?=$|[A-Z][a-z])|[A-Z]?[a-z]+)&quot;).OfType(Of System.Text.RegularExpressions.Match).Count&gt;0, &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;String.Join(&quot; &quot;,System.Text.RegularExpressions.Regex.Matches(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1),&quot;([A-Z]+(?=$|[A-Z][a-z])|[A-Z]?[a-z]+)&quot;).OfType(Of System.Text.RegularExpressions.Match).Select(Function(x) x.Value)),&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c)(in_queueName.Replace(&quot;_&quot;,&quot;/&quot;).Split(&quot;/&quot;c).Length-1)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;)&#xD;&#xA;&#x9;&#x9;&#x9;)&#xD;&#xA;&#x9;&#x9;).Replace(&quot;cao&quot;,&quot;ção&quot;),now.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;))" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_attachment">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Path.Combine(DirectCast(in_config(&quot;spreadSheetFilePath&quot;),String),String.Concat(in_queueName,&quot;-itens.xlsx&quot;))" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_smtpPort">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="DirectCast(in_config(&quot;smtpMailPort&quot;), Int32)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_smtpServer">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DirectCast(in_config(&quot;smtpMailServer&quot;),String)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_smtpMailReceiverCc">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_emailReceiverCc" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_projectName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DirectCast(in_config(&quot;projectName&quot;),String)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_logoBase64">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DirectCast(in_config(&quot;logoBase64&quot;),String)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_gifBase64">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DirectCast(in_config(&quot;gifBase64&quot;),String)" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_sendMailToBusinessArea">
+          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_sendMailToBusinessArea" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
